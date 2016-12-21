@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Configures the Camel Context-->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- <bean id="sampleHttpRoute" class="software.travel.software.travel.pegs.route.SampleHttpRouteBuilder"/>
+   <bean id="sampleProcessor" class="software.travel.software.travel.pegs.processor.SampleProcessor"/>-->
+  <context:component-scan base-package="software.travel"/>
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
-    <!-- here is a sample which processes the input files
-         (leaving them in place - see the 'noop' flag)
-         then performs content based routing on the message using XPath -->
-    <route>
-      <from uri="file:src/data?noop=true"/>
-      <choice>
-        <when>
-          <xpath>/person/city = 'London'</xpath>
-          <log message="UK message"/>
-          <to uri="file:target/messages/uk"/>
-        </when>
-        <otherwise>
-          <log message="Other message"/>
-          <to uri="file:target/messages/others"/>
-        </otherwise>
-      </choice>
-    </route>
+    <packageScan>
+      <package>software.travel</package>
+    </packageScan>
+    <contextScan/>
   </camelContext>
-  location ~ /hotel-images/(.*)$ {
-  alias /var/www/bst-front/partners/upload/hotels/$1;
-  }
-  client_max_body_size 3m;
-  rewrite ^/#/(.*)$ /#/$1 redirect;
+
+
 </beans>
