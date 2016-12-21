@@ -8,7 +8,7 @@ import org.apache.camel.spring.Main;
 public class Application {
 
     public static void main(final String[] params) throws Exception {
-        Main main = new Main();
+        final Main main = new Main();
         main.run();
         System.out.println("Hello world!");
     }

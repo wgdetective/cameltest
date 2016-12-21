@@ -11,8 +11,8 @@ import software.travel.pegs.processor.SampleProcessor;
 public class SampleHttpRouteBuilder extends SpringRouteBuilder {
 
     public void configure() throws Exception {
-        from("file:src/data")
+        from("jetty:http://localhost:8080/test")
                 .process(new SampleProcessor())
-                .to("file:src/data2");
+                .to("file:src/data2?fileName=test.txt");
     }
 }
