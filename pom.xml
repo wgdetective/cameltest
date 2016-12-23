@@ -11,7 +11,7 @@
 
 
     <properties>
-        <javaVersion>1.7</javaVersion>
+        <javaVersion>1.8</javaVersion>
         <springVersion>4.2.4.RELEASE</springVersion>
         <camelVersion>2.18.1</camelVersion>
         <log4jversion>2.7</log4jversion>
