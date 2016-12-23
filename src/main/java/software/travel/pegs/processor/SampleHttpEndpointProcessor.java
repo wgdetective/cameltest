@@ -11,7 +11,7 @@ public class SampleHttpEndpointProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         final String message = exchange.getIn().getBody(String.class);
-        exchange.getIn().setBody("Endpoint message - " + message);
+        //exchange.getIn().setBody("Endpoint message - " + message);
         System.out.println("Endpoint message - " + message);
     }
 }

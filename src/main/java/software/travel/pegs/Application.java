@@ -16,6 +16,4 @@ public class Application {
         main.run();
         System.out.println("Hello world!");
     }
-
-
 }
