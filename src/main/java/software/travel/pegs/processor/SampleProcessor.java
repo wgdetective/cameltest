@@ -12,9 +12,10 @@ public class SampleProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
         final String message = exchange.getIn().getBody(String.class);
-/*        File file = new File("test.txt");
-        FileUtils.write(file, message);*/
         exchange.getIn().setBody("Incoming message - " + message);
+        exchange.getIn().setHeader("Test_param", "ping");
+    //    exchange.getIn().setHeader(Exchange.HTTP_METHOD, "GET");
+       // exchange.getOut().setBody("Incoming message - " + message);
         System.out.println("Message - " + message);
     }
 }
